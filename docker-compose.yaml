@@ -1,0 +1,16 @@
+services:
+  postgres-db:
+    container_name: gutendex-db
+    image: postgres:14-alpine3.19
+  environment:
+    - DATABASE_USER=gutenuser
+    - DATABASE_PASSWORD=gutenpass
+    - DATABASE_NAME=gutendex-db
+  volumes:
+    - db-data:/var/lib/postgresql/db-data
+  ports:
+    - 5432:5432
+  networks:
+    - app-db
+
+volumes: db-data
